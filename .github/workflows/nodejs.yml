@@ -33,3 +33,10 @@ jobs:
       env: 
         BRANCH: ${{ github.ref }}
         COMMIT: ${{ github.sha }}
+    - name : Push Docker image
+      run: |
+        docker login xebxke -u $DOCKER_PUSH_USERNAME -p $DOCKER_PUSH_PASSWORD
+        docker push xebxke/totoactions:${BRANCH#/refs/heads/}/$COMMIT
+      env:
+        DOCKER_PUSH_USERNAME: ${{ secrets.DOCKER_PUSH_USERNAME }}
+        DOCKER_PUSH_PASSWORD: ${{ secrets.DOCKER_PUSH_PASSWORD }}
