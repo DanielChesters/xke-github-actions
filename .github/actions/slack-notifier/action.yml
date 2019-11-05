@@ -1,7 +1,25 @@
 name: 'slack Notifier'
 description: 'Notify slack with a provided message'
 inputs:
+    message:
+        description: "The message to send"
+        required: false
+    token:
+        description: "The Slack token"
+        required: true
+    channel:
+        description: "The Slack channel"
+        required: false
+    botname:
+        description: "The Bot name"
+        required: false
 outputs:
 runs:
   using: 'docker'
   image: 'Dockerfile'
+  args:
+      - ${{ inputs.message }}
+  env:
+    SLACK_TOKEN: ${{ inputs.token }}
+    SLACK_BOT: ${{ inputs.botname }}
+    SLACK_CHANNEL: ${{ inputs.channel }}
