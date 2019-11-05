@@ -29,14 +29,14 @@ jobs:
       run: |
          echo ${BRANCH#/refs/heads/}
          echo $BRANCH
-         docker build -t xebxke/totoactions:${BRANCH#/refs/heads/}/$COMMIT .
+         docker build -t xebxke/totoactions:${BRANCH#refs/heads/}/$COMMIT .
       env: 
         BRANCH: ${{ github.ref }}
         COMMIT: ${{ github.sha }}
     - name : Push Docker image to repo
       run: |
         docker login xebxke -u $DOCKER_PUSH_USERNAME -p $DOCKER_PUSH_PASSWORD
-        docker push xebxke/totoactions:${BRANCH#/refs/heads/}/$COMMIT
+        docker push xebxke/totoactions:${BRANCH#refs/heads/}/$COMMIT
       env:
         DOCKER_PUSH_USERNAME: ${{ secrets.DOCKER_PUSH_USERNAME }}
         DOCKER_PUSH_PASSWORD: ${{ secrets.DOCKER_PUSH_PASSWORD }}
