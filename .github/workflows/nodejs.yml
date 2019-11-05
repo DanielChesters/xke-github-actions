@@ -24,3 +24,10 @@ jobs:
       run: npm install && npm test && npm run build
       env:
         CI: true
+        
+    - name: Build Docker image
+      run: |
+         docker build -t xebxke/totoactions:${BRANCH#/ref/heads/}/$COMMIT .
+      env: 
+        BRANCH: ${{ github.ref }}
+        COMMIT: ${{ secrets.GITHUB_TOKEN }}
