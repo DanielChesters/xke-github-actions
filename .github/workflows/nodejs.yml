@@ -27,7 +27,7 @@ jobs:
         
     - name: Build Docker image
       run: |
-         echo ${BRANCH#/refs/heads/}
+         echo ${BRANCH#refs/heads/}
          echo $BRANCH
          docker build -t xebxke/totoactions:${BRANCH#refs/heads/}/$COMMIT .
       env: 
@@ -40,3 +40,6 @@ jobs:
       env:
         DOCKER_PUSH_USERNAME: ${{ secrets.DOCKER_PUSH_USERNAME }}
         DOCKER_PUSH_PASSWORD: ${{ secrets.DOCKER_PUSH_PASSWORD }}
+    - uses: .github/actions/slack-notifier
+        
+        
