@@ -40,6 +40,6 @@ jobs:
       env:
         DOCKER_PUSH_USERNAME: ${{ secrets.DOCKER_PUSH_USERNAME }}
         DOCKER_PUSH_PASSWORD: ${{ secrets.DOCKER_PUSH_PASSWORD }}
-    - uses: .github/actions/slack-notifier
+        #    - uses: .github/actions/slack-notifier
         
         
