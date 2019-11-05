@@ -41,10 +41,11 @@ jobs:
         DOCKER_PUSH_USERNAME: ${{ secrets.DOCKER_PUSH_USERNAME }}
         DOCKER_PUSH_PASSWORD: ${{ secrets.DOCKER_PUSH_PASSWORD }}
     - name : Publish message on Slack
-      uses: danielchesters/xke-github-actions/.github/actions/slack-notifier@HEAD
+      uses: ./.github/actions/slack-notifier
       with :
-          message: Image xebxke/totoactions:${BRANCH#refs/heads/}-$COMMIT} pushed
+          message: "Image xebxke/totoactions:${BRANCH#refs/heads/}-$COMMIT} pushed"
           channel: "#xke-github-actions"
           token: ${{ secrets.SLACK_BOT_TOKEN }}
+
 
         
