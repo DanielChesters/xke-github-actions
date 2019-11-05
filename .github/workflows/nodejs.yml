@@ -27,7 +27,7 @@ jobs:
         
     - name: Build Docker image
       run: |
-         docker build -t xebxke/totoactions:${BRANCH#/ref/heads/}/$COMMIT .
+         docker build -t xebxke/totoactions:${BRANCH#/ref/head/}/$COMMIT .
       env: 
         BRANCH: ${{ github.ref }}
         COMMIT: ${{ github.sha }}
